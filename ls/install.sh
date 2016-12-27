@@ -1,3 +1,3 @@
 #!/bin/sh
 
-dircolors < lscolors.txt > ~/.lscolors
+dircolors < $DOTFILES/ls/lscolors.txt > ~/.lscolors
