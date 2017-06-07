@@ -34,6 +34,7 @@ let mapleader = ","
 " toggle nerdtree with ,e
 :nmap ,e :NERDTreeToggle<CR>
 :nmap ,t :FZF<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " ,s will strip whitespaces
 function! StripWhitespace ()
