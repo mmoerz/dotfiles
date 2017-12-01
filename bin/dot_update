@@ -24,7 +24,7 @@ git pull --rebase --stat updates "$(git rev-parse --abbrev-ref HEAD)"
 
 # Update submodules
 echo "› submodules update"
-#git submodule update --init --recursive --remote --merge --quiet
+git submodule update --init --recursive --remote --merge --quiet
 
 # Run all installs
 echo "› $DOTFILES/script/install"
