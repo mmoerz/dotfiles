@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 if which docker >/dev/null 2>&1; then
   dcleanup() {
     # shellcheck disable=SC2046
