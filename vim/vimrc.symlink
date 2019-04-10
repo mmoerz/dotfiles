@@ -16,6 +16,7 @@ Plugin 'junegunn/fzf'
 Plugin 'wakatime/vim-wakatime'
 " Plugin 'avakhov/vim-yaml'
 Plugin 'lepture/vim-jinja'
+Plugin 'posva/vim-vue'
 
 set rtp+=~/.fzf
 
