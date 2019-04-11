@@ -1,14 +1,16 @@
-set nocompatible
+set nocompatible			" required by vundle
+filetype off				" required by vundle
+
 set background=dark
 colorscheme base16-ocean
-filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'tpope/vim-sensible'
 Plugin 'rstacruz/vim-opinion'
 " Hit CTRL+_ to close most recent tag
-Plugin 'vim-scripts/closetag.vim'
+"Plugin 'vim-scripts/closetag.vim'
+Plugin 'alvan/vim-closetag'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fatih/vim-go'
 Plugin 'honza/dockerfile.vim'
@@ -43,3 +45,7 @@ function! StripWhitespace ()
   exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+" closetags configuration
+let g:closetag_filetypes= 'html,xhtml,phtml,vue'
+let g:closetag_filenames= '*.html,*.xhtml,*.phtml,*.vue'
