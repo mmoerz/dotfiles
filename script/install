@@ -1,9 +1,15 @@
 #!/bin/sh
 #
+# Run bin/dot_update for first-installation
+# this is an internal script file (helper)
 # Run all dotfiles installers.
+# 
 set -e
 
-cd "$(dirname "$0")"/..
+# 
+#export DOTFILES=$(dirname "$0")/..
+#cd $DOTFILES
+export PATH=$PATH:$DOTFILES/bin
 
 # find the installers and run them iteratively
 git ls-tree --name-only -r HEAD | grep install.sh | while read -r installer; do

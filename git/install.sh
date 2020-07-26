@@ -7,6 +7,26 @@ else
   git config --global credential.helper cache
 fi
 
+LSB=$(which lsb_release)
+if [ "X$LSB" != "X" ] ; then
+  DIST=$($LSB -i | cut -f2)
+  case $DIST in
+    Ubuntu)
+      ASKPASS=$(find /usr/lib -name "*gnome-ssh-askpass")
+      ;;
+    ManjaroLinux)
+      ASKPASS=$(which ksshaskpass)
+      ;;
+    *):
+      ASKPASS=$(which askpass | grep ssh | head -n1)
+      ;;
+  esac
+  if [ "X$ASKPASS" != "X" ] ; then
+    echo sshaskpass found: $ASKPASS
+    git config --global core.askpass $ASKPASS
+  fi
+fi
+
 # better diffs
 if which diff-so-fancy > /dev/null 2>&1; then
   git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
