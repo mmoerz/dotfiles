@@ -3,12 +3,19 @@ if which antibody > /dev/null 2>&1; then
   echo antibody installed
 else
   # install pacman on archlinux
-  curl -sL https://git.io/antibody | sh -s
-  if [ "X$UID" = "X0" ]; then
-	  pacman -S antibody
-  else
-	  sudo pacman -S antibody
-  fi
+  DIST=$(lsb_release -i | cut -f2)
+  case "$DIST" in
+	  ManjaroLinux | arch)	
+		  echo "arch based distro found"
+		  arch=1;
+		  sudo pacman -S antibody
+		  ;;
+	  Ubuntu)
+		  echo "other distro found, fetching script"
+		  sudo apt-get -y install golang
+		  curl -sL https://git.io/antibody | sh -s
+		  ;;
+  esac
 fi
 
 antibody bundle < "$DOTFILES/antibody/bundles.txt" > ~/.bundles.txt

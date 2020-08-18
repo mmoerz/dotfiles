@@ -46,3 +46,10 @@ unset config_files updated_at
 # want in your public, versioned repo.
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
+
+# avoid typing ssh key passwords all the time
+if [ $SSH_AGENT_PID ]; then
+    if [[ $(ssh-add -l) != *id_?sa* ]]; then
+        ssh-add -t 2h  ## remember for 2 hours
+    fi
+fi
