@@ -1,6 +1,6 @@
 #!/bin/sh
 if which antibody > /dev/null 2>&1; then
-  echo antibody install
+  echo antibody installed
 else
   # install pacman on archlinux
   curl -sL https://git.io/antibody | sh -s
