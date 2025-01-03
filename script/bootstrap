@@ -112,8 +112,18 @@ info "setting up OS"
 success "OS set up"
 
 zsh="$(find_zsh)"
+info $zsh
 if [ ! -e "$zsh" ] ; then
-  sudo apt-get install zsh
+  APT="/usr/bin/apt-get"
+  if [ -e "X$APT" ]; then
+    sudo apt-get install zsh
+  fi
+
+  YUM=`which yum`
+  if [ "X" != "X$YUM" ]; then
+	  echo "installing"
+    sudo yum install zsh
+  fi
 fi
 
 which chsh > /dev/null 2>&1 && 
