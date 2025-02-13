@@ -1,13 +1,38 @@
 servers = (
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  { address = "irc.esper.net"; chatnet = "EsperNet"; port = "6667"; },
+  {
+    address = "ssl.efnet.org";
+    chatnet = "EFNet";
+    port = "9999";
+    use_tls = "yes";
+    tls_verify = "no";
+  },
+  {
+    address = "irc.esper.net";
+    chatnet = "EsperNet";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
+  {
+    address = "irc.libera.chat";
+    chatnet = "liberachat";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
   {
     address = "irc.gamesurge.net";
     chatnet = "GameSurge";
     port = "6667";
   },
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
+  {
+    address = "ssl.ircnet.ovh";
+    chatnet = "IRCnet";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
   { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
   {
     address = "irc.ircsource.net";
@@ -15,13 +40,25 @@ servers = (
     port = "6667";
   },
   { address = "irc.netfuze.net"; chatnet = "NetFuze"; port = "6667"; },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
+  {
+    address = "irc.oftc.net";
+    chatnet = "OFTC";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
   { 
     address = "irc.quakenet.org";
     chatnet = "QuakeNet";
     port = "6667";
   },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
+  {
+    address = "irc.rizon.net";
+    chatnet = "Rizon";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
   { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   { 
     address = "irc.undernet.org";
@@ -29,8 +66,15 @@ servers = (
     port = "6667";
   },
   {
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
+    address = "irc.ergo.chat";
+    chatnet = "ircergo";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
+  {
+    address = "irc.pine64.org";
+    chatnet = "ircpine";
     port = "6697";
     use_tls = "yes";
     tls_verify = "yes";
@@ -57,14 +101,11 @@ chatnets = {
     max_msgs = "4";
     max_whois = "1";
   };
-  Freenode = {
+  liberachat = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
-    sasl_mechanism = "PLAIN";
-    sasl_username = "natoka";
-    sasl_password = "StarCraft33Foobar";
   };
   GameSurge = {
     type = "IRC";
@@ -110,6 +151,13 @@ chatnets = {
     max_msgs = "1";
     max_whois = "1";
   };
+  ircergo = {
+    type = "IRC";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "natoka";
+    sasl_password = "StarCraft33.Foobar";
+  };
+  ircpine = { type = "IRC"; };
   freenodeNoSasl = { type = "IRC"; };
 };
 
@@ -123,6 +171,7 @@ channels = (
   { name = "#netfuze"; chatnet = "NetFuze"; autojoin = "No"; },
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
   { name = "silc"; chatnet = "SILC"; autojoin = "No"; }
+  { name = "pinenote"; chatnet = "ircpine"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -135,6 +184,7 @@ aliases = {
   C = "CLEAR";
   CALC = "EXEC - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
   CHAT = "DCC CHAT";
+  CS = "QUOTE CS";
   CUBES = "SCRIPT EXEC Irssi::active_win->print(\"%_bases\", MSGLEVEL_CLIENTCRAP) \\; Irssi::active_win->print( do { join '', map { \"%x0\\${_}0\\$_\" } '0'..'9','A'..'F' }, MSGLEVEL_NEVER | MSGLEVEL_CLIENTCRAP) \\; Irssi::active_win->print(\"%_cubes\", MSGLEVEL_CLIENTCRAP) \\; Irssi::active_win->print( do { my \\$y = \\$_*6 \\; join '', map { my \\$x = \\$_ \\; map { \"%x\\$x\\$_\\$x\\$_\" } @{['0'..'9','A'..'Z']}[\\$y .. \\$y+5] } 1..6 }, MSGLEVEL_NEVER | MSGLEVEL_CLIENTCRAP) for 0..5 \\; Irssi::active_win->print(\"%_grays\", MSGLEVEL_CLIENTCRAP) \\; Irssi::active_win->print( do { join '', map { \"%x7\\${_}7\\$_\" } 'A'..'X' }, MSGLEVEL_NEVER | MSGLEVEL_CLIENTCRAP) \\; Irssi::active_win->print(\"%_mIRC extended colours\", MSGLEVEL_CLIENTCRAP) \\; my \\$x \\; \\$x .= sprintf \"\00399,%02d%02d\",\\$_,\\$_ for 0..15 \\; Irssi::active_win->print(\\$x, MSGLEVEL_NEVER | MSGLEVEL_CLIENTCRAP) \\; for my \\$z (0..6) { my \\$x \\; \\$x .= sprintf \"\00399,%02d%02d\",\\$_,\\$_ for 16+(\\$z*12)..16+(\\$z*12)+11 \\; Irssi::active_win->print(\\$x, MSGLEVEL_NEVER | MSGLEVEL_CLIENTCRAP) }";
   DATE = "TIME";
   DEHIGHLIGHT = "DEHILIGHT";
@@ -157,6 +207,8 @@ aliases = {
   MUB = "UNBAN *";
   N = "NAMES";
   NMSG = "^MSG";
+  NS = "QUOTE NS";
+  OS = "QUOTE OS";
   P = "PART";
   Q = "QUERY";
   RESET = "SET -default";
@@ -378,6 +430,11 @@ statusbar = {
   };
 };
 settings = {
-  core = { real_name = "Unknown"; user_name = "natoka"; nick = "natoka"; };
+  core = {
+    real_name = "Michael Moerz";
+    user_name = "mmoerz";
+    nick = "natoka";
+  };
   "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = { autolog = "yes"; };
 };
