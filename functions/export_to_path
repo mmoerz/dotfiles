@@ -8,5 +8,5 @@ if [[ -d "$dir" ]]; then
   else
   	path=($path "$dir")
   fi
-  [ $DEBUG > 0 ] && echo $dir added
+  [[ $DEBUG -gt 0 ]] && echo $dir added
 fi
