@@ -1,17 +1,22 @@
 #!/bin/sh
-ANTIDOTE=`which antidote`
+ANTIDOTE=`which antidote 2>/dev/null`
 ANTIDOTEDIR="$HOME/.antidote"
 GITREPO="https://github.com/mattmc3/antidote.git"
-if [ "X$ANTIDOTE" != "X" ]; then
+DEBUG=0
+if [ "X$ANTIDOTE" == "X" ]; then
   if [ -e "$ANTIDOTEDIR/antidote.zsh" ]; then
     ANTIDOTE="$ANTIDOTEDIR/antidote.zsh"
   fi
 fi
 if [ "X$ANTIDOTE" != "X" ]; then
-  echo antidote installed
+  [ $DEBUG -gt 0 ] && echo antidote installed
 else
   # install pacman on archlinux
-  DIST=$(lsb_release -i | cut -f2)
+  if [ `which lsb_release` ]; then
+    DIST=$(lsb_release -i | cut -f2)
+  else
+    DIST=other
+  fi
   case "$DIST" in
 	  ManjaroLinux | arch)	
 		  echo "arch based distro found"
@@ -26,5 +31,5 @@ else
 		  ;;
   esac
 fi
-[ -d "$ANTIDOTEDIR"] || mkdir $ANTIDOTEDIR
+[ -d "$ANTIDOTEDIR" ] || mkdir $ANTIDOTEDIR
 

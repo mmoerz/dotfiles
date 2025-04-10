@@ -7,7 +7,7 @@ else
   git config --global credential.helper cache
 fi
 
-LSB=$(which lsb_release)
+LSB=$(which lsb_release 2>/dev/null)
 if [ "X$LSB" != "X" ] ; then
   DIST=$($LSB -i | cut -f2)
   case $DIST in

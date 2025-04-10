@@ -30,6 +30,6 @@ fi
 #    ~/.pam_environment
 #fi
 
-systemctl enable --user ssh-agent.service
-systemctl start --user ssh-agent.service
+#systemctl enable --user ssh-agent.service
+#systemctl start --user ssh-agent.service
 
