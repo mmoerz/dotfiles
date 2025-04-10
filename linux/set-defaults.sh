@@ -1,5 +1,5 @@
 #!/bin/sh
-if test ! "$(which gsettings)"; then
+if [ ! "$(which gsettings)" ]; then
   exit 0
 fi
 
@@ -7,6 +7,8 @@ fi
 gsettings set org.gnome.desktop.media-handling autorun-never true
 
 # set terminator as default terminal
-if test "$(which terminator)"; then
+if [ "$(which terminator 2>/dev/null)" ]; then
   gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
+else
+  echo "terminator (shellwindow) not installed"
 fi

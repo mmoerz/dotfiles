@@ -1,0 +1,12 @@
+# Function to append the directory to the path array.
+local location="$1"
+local dir="$2"
+if [[ -d "$dir" ]]; then
+  # Append the directory to the path array.
+  if [[ "$location" == "front" ]]; then
+  	path=("$dir" $path)
+  else
+  	path=($path "$dir")
+  fi
+  echo $dir added
+fi

@@ -1,1 +1,1 @@
-export PATH="$PATH:/opt/android-studio/bin"
+export_to_path back "/opt/android-studio/bin"

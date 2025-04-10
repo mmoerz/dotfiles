@@ -12,6 +12,9 @@ export EDITOR='vim'
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
 
+# load the functions
+source $DOTFILES/zsh/fpath.zsh
+
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}; do
   source "$file"
@@ -20,16 +23,16 @@ done
 # load antidote
 # Lazy-load antidote and generate the static load file only when needed
 zsh_plugins=$HOME/.zsh_plugins
+source $HOME/.antidote/antidote.zsh
 if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
   (
-    source $HOME/.antidote/antidote.zsh
     antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
   )
 fi
-source $HOME/.antidote/$zsh_plugins.zsh
+source $zsh_plugins.zsh
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
+# load everything but the path, completion and fpath files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh:#*/fpath.zsh}; do
   source "$file"
 done
 

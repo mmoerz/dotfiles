@@ -3,3 +3,5 @@
 for topic_folder ($DOTFILES/*) if [ -d "$topic_folder" ]; then
   fpath=($topic_folder $fpath)
 fi
+# U -disable alias expansion, z force zsh-style autoloading
+autoload -Uz "$DOTFILES"/functions/*(:t)
