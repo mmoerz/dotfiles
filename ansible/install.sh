@@ -1,12 +1,14 @@
 #!/bin/sh
+PATH=$PATH:~/.local/bin
 ANSIBLE=`which ansible 2>/dev/null`
 ANSIBLEDIR="$HOME/.ansible"
-DEBUG=0
+DEBUG=1
+[ $DEBUG -gt 1 ] && echo ">$ANSIBLE<"
 if [ "X$ANSIBLE" != "X" ]; then
   [ $DEBUG -gt 0 ] && echo ansible is installed
 else
   # install pacman on archlinux
-  if [ `which lsb_release` ]; then
+  if [ `which lsb_release 2>/dev/null` ]; then
     DIST=$(lsb_release -i | cut -f2)
   else
     DIST=other
