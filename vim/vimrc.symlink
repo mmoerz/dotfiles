@@ -49,3 +49,6 @@ map ,s :call StripWhitespace ()<CR>
 " closetags configuration
 let g:closetag_filetypes= 'html,xhtml,phtml,vue'
 let g:closetag_filenames= '*.html,*.xhtml,*.phtml,*.vue'
+
+" vim-go shenanigans
+let g:go_version_warning = 0
