@@ -5,6 +5,7 @@ sindresorhus/pure
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/ansible
 
 # add fish-like features
 zsh-users/zsh-syntax-highlighting
