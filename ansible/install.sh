@@ -29,5 +29,7 @@ else
   esac
 fi
 
+# create empty hosts file
+[ -e ~/.ansible/hosts ] || touch ~/.ansible/hosts
 
 
