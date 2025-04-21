@@ -1,4 +1,5 @@
 #!/bin/sh
+PATH="$PATH:~/.local/bin"
 ANTIDOTE=`which antidote 2>/dev/null`
 ANTIDOTEDIR="$HOME/.antidote"
 GITREPO="https://github.com/mattmc3/antidote.git"
@@ -12,7 +13,7 @@ if [ "X$ANTIDOTE" != "X" ]; then
   [ $DEBUG -gt 0 ] && echo antidote installed
 else
   # install pacman on archlinux
-  if [ `which lsb_release` ]; then
+  if [ `which lsb_release 2>/dev/null` ]; then
     DIST=$(lsb_release -i | cut -f2)
   else
     DIST=other
