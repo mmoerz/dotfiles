@@ -51,5 +51,5 @@ let g:closetag_filetypes= 'html,xhtml,phtml,vue'
 let g:closetag_filenames= '*.html,*.xhtml,*.phtml,*.vue'
 
 " vim-go shenanigans
-echo "ignoring vim-go version mismatch (vim-go might not work)"
+"echo "ignoring vim-go version mismatch (vim-go might not work)"
 let g:go_version_warning = 0
