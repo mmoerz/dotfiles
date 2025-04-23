@@ -12,6 +12,21 @@ if [ -z "$KUBESEAL_VERSION" ]; then
     exit 1
 fi
 
-curl -OL "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-amd64.tar.gz"
-tar -xvzf kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz kubeseal
-sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+KUBESEAL=`which kubeseal`
+if [ "X$KUBESEAL" == "X" ] ; then
+  # fetch a kubeseal version
+  FETCH=1
+else
+  VERSION=`$KUBESEAL --version | cut -d ' ' -f 3`
+  if [ "X$VERSION" != "X$KUBESEAL_VERSION" ] ; then
+    echo "installed version:$VERSION, upgrading to $KUBESEAL_VERSION"
+    FETCH=1
+  fi
+fi
+
+if [ "X$FETCH" == "X1" ] ; then 
+  curl -OL "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-amd64.tar.gz"
+  tar -xvzf kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz kubeseal
+  sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+  rm kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz kubeseal
+fi
