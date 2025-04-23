@@ -31,3 +31,6 @@ fi
 if which diff-so-fancy > /dev/null 2>&1; then
   git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 fi
+
+# standard for changes in local and remote is to merge
+git config --global pull.rebase
