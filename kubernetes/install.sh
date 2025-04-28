@@ -60,7 +60,7 @@ if [ "X$FETCH" == "X1" ] ; then
     echo sha256sum check failed exiting
     exit 128
   fi
-
+  rm sha256sum.txt
 
   [ -e metal-amd64.iso ] && \
     mv metal-amd64.iso ~/Downloads/metal-amd64-${TALOS_VERSION}.iso
