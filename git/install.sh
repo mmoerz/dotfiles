@@ -33,4 +33,4 @@ if which diff-so-fancy > /dev/null 2>&1; then
 fi
 
 # standard for changes in local and remote is to merge
-git config --global pull.rebase
+git config --global pull.rebase false
