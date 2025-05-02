@@ -40,7 +40,7 @@ if [ "X$TALOSCTL" == "X" ] ; then
 else
   VERSION=`$TALOSCTL version | sed -ne 's/.*Tag:\s\+\(v.*\)/\1/p' 2>/dev/null`
   if [ "X$VERSION" != "X$TALOS_VERSION" ] ; then
-    echo "installed verson:$VERSION, changin to $TALOS_VERSION"
+    echo "installed verson:$VERSION, changing to $TALOS_VERSION"
     FETCH=1
   fi
 fi
