@@ -1,7 +1,7 @@
 #/bin/bash
 
 # set talos version
-TALOS_VERSION="v1.10.0-beta.1"
+TALOS_VERSION="v1.10.0"
 
 # Set this to, for example, KUBESEAL_VERSION='0.23.0'
 KUBESEAL_VERSION='0.28'
