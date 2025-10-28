@@ -17,9 +17,11 @@ source $DOTFILES/zsh/fpath.zsh
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}; do
+  [[ $DEBUG -gt 1 ]] && echo "sourcing $file"
   source "$file"
 done
 
+echo $PATH
 # load antidote
 # Lazy-load antidote and generate the static load file only when needed
 zsh_plugins=$HOME/.zsh_plugins
