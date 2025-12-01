@@ -24,8 +24,10 @@ done
 # load antidote
 # Lazy-load antidote and generate the static load file only when needed
 zsh_plugins=$HOME/.zsh_plugins
+zsh_plugtxt=$(readlink ${zsh_plugins}.txt)
+zsh_plugzsh=${zsh_plugins}.zsh
 source $HOME/.antidote/antidote.zsh
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+if [[ ( -e ${zsh_plugtxt} && ${zsh_plugtxt} -nt ${zsh_plugzsh} ) || ! -e ${zsh_plugzsh} ]]; then
   (
     antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
   )
