@@ -1,5 +1,11 @@
 #/bin/bash
 
+JQ=`which jq`
+if [ "X$JQ" = "X" ]; then
+	echo "missing jq"
+	exit 1
+fi
+
 # set talos version
 TALOS_VERSION="v1.10.0"
 

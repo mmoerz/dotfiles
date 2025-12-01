@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/sh 
 PATH="$PATH:~/.local/bin"
 ANTIDOTE=`which antidote 2>/dev/null`
 ANTIDOTEDIR="$HOME/.antidote"
 GITREPO="https://github.com/mattmc3/antidote.git"
 DEBUG=0
-if [ "X$ANTIDOTE" == "X" ]; then
+[ $DEBUG -gt 0 ] && echo ">$ANTIDOTE<"
+if [ "X$ANTIDOTE" = "X" ]; then
   if [ -e "$ANTIDOTEDIR/antidote.zsh" ]; then
     ANTIDOTE="$ANTIDOTEDIR/antidote.zsh"
   fi

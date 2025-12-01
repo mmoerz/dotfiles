@@ -21,15 +21,23 @@ else
 		  ANTIDOTE=`which ansible`
 		  ;;
 	  *)
-		  echo "other distro $DIST found, fetching script"
-      pip3 install --user ansible
-		  activate-global-python-argcomplete --user
-      ansible --version | head -n1
+		  echo "other distro $DIST found"
+		  if [ `which pip3 2>/dev/null` ]; then
+			  pip3 install --user ansible
+			  activate-global-python-argcomplete --user
+			  ansible --version | head -n1
+		  else
+			  echo "missing pip3, skipping ansible installation"
+
+		  fi
 		  ;;
   esac
 fi
 
-# create empty hosts file
-[ -e ~/.ansible/hosts ] || touch ~/.ansible/hosts
+ANSIBLE=`which ansible 2>/dev/null`
+if [ "X$ANSIBLE" != "X" ]; then
+  # create empty hosts file
+  [ -e ~/.ansible/hosts ] || touch ~/.ansible/hosts
+fi
 
 
