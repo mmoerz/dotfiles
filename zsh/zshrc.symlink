@@ -26,7 +26,8 @@ echo $PATH
 # Lazy-load antidote and generate the static load file only when needed
 zsh_plugins=$HOME/.zsh_plugins
 source $HOME/.antidote/antidote.zsh
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+if [[ ! -e ${zsh_plugins}.zsh || ${zsh_plugins}.txt -nt ${zsh_plugins}.zsh ]]; then
+#if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
   (
     antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
   )
