@@ -6,3 +6,5 @@ typeset -aU path
 # Then every time you want to append any path to $PATH just call this function with the path argument.
 export_to_path "back" "$HOME/bin"
 export_to_path "back" "$HOME/.local/bin"
+export_to_path "back" "$HOME/.cargo/bin"
+
