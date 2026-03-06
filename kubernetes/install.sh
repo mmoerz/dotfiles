@@ -3,7 +3,7 @@
 JQ=`which jq`
 if [ "X$JQ" = "X" ]; then
 	echo "missing jq"
-	exit 1
+	exit 0 
 fi
 
 # set talos version
