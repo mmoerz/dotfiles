@@ -5,3 +5,6 @@ if [[ -f "$HOME/.cargo/bin" ]]; then
   fi
   unset CARGO_V
 fi
+if sccache_path=$(command -v sccache 2>/dev/null); then
+  export RUSTC_WRAPPER="$sccache_path"
+fi
