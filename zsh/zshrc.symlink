@@ -67,3 +67,6 @@ if [ $SSH_AGENT_PID ]; then
         ssh-add -t 2h  ## remember for 2 hours
     fi
 fi
+
+# Added by codebase-memory-mcp install
+export PATH="/home/mmoerz/.local/bin:$PATH"

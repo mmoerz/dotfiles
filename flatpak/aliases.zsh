@@ -10,6 +10,8 @@ if command -v flatpak >/dev/null 2>&1; then
     discord com.discordapp.Discord
     inkscape org.inkscape.Inkscape
     blender org.blender.Blender
+    zed dev.zed.Zed
+    zed-preview dev.zed.Zed-Preview
   )
 
   for alias_name app_id in ${(kv)FLATPAK_ALIASES}; do
