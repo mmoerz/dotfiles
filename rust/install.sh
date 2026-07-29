@@ -13,6 +13,6 @@ if [ ! -d "$RUSTDIR" ] || [ ! -e "$RUSTBIN" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
 
-if [ ! -d "$RUSTDIR" ] || [ ! -e "$SCCACHEBIN" ]; then
-  cargo install sccache
-fi
+#if [ ! -d "$RUSTDIR" ] || [ ! -e "$SCCACHEBIN" ]; then
+#  cargo install sccache
+#fi
