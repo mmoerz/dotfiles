@@ -12,7 +12,10 @@ set -e
 export PATH=$PATH:$DOTFILES/bin
 
 # find the installers and run them iteratively
-git ls-tree --name-only -r HEAD | grep install.sh | while read -r installer; do
+LIST=$(git ls-tree --name-only -r HEAD | grep install.sh)
+
+for installer in $LIST; do
   echo "› ${installer}..."
-  sh -c "$installer"
+  sh "$installer"
 done
+   

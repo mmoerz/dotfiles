@@ -58,6 +58,51 @@
       parent = child5
       profile = default
       type = Terminal
+    [[[child8]]]
+      order = 1
+      parent = ""
+      position = 0:25
+      size = 1366, 708
+      type = Window
+    [[[child9]]]
+      order = 0
+      parent = child8
+      position = 632
+      type = HPaned
+    [[[child10]]]
+      order = 0
+      parent = child9
+      position = 354
+      type = VPaned
+    [[[child11]]]
+      order = 1
+      parent = child9
+      position = 354
+      type = VPaned
+    [[[terminal12]]]
+      command = su - ansible; zsh
+      order = 0
+      parent = child10
+      profile = default
+      type = Terminal
+    [[[terminal13]]]
+      command = zsh
+      order = 1
+      parent = child10
+      profile = default
+      type = Terminal
+    [[[terminal14]]]
+      command = su - ansible; zsh
+      order = 0
+      parent = child11
+      profile = default
+      type = Terminal
+    [[[terminal15]]]
+      command = zsh
+      order = 1
+      parent = child11
+      profile = default
+      type = Terminal
   [[godot]]
     [[[child0]]]
       order = 0
